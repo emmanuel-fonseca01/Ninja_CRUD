@@ -5,4 +5,4 @@ from datetime import date
 class BookSchema(schema):
     title: str
     author: str
-    publication_year: date
+    publication_date: date
