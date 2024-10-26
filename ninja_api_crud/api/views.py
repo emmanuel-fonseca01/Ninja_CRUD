@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from ninja import NinjaAPI
+from .models import Book
+from .serializers import BookSchema
 
-# Create your views here.
+api = NinjaAPI
+
+@api.post("/books")
+def create_book(request, payload: BookSchema):
+    book = Book.objects.create(**payload.dic())
+    return {"id": book.id}
