@@ -1,8 +1,8 @@
-from ninja import schema
+from ninja import Schema
 from datetime import date
 
 
-class BookSchema(schema):
+class BookSchema(Schema):
     title: str
     author: str
     publication_date: date
