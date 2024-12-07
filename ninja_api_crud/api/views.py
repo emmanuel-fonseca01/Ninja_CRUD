@@ -30,3 +30,10 @@ def update_book(request, book_id: int, payload: BookSchema):
         setattr(book, attr, value)
     book.save()
     return {"message: success"}
+
+@api.delete("/books/{book_id}")
+def delete_book(request, book_id: int):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    
+    return {"message: success"}
