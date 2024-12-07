@@ -22,3 +22,11 @@ def get_book(request, book_id: int):
 def list_books(request):
     qs = Book.objects.all()
     return qs
+
+@api.put("/books/{book_id}")
+def update_book(request, book_id: int, payload: BookSchema):
+    book = get_object_or_404(Book, id=book_id)
+    for attr, value in payload.dict().items():
+        setattr(book, attr, value)
+    book.save()
+    return {"message: success"}
